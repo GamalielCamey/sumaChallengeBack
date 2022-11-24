@@ -1,16 +1,37 @@
 const {Router} = require("express");
 const {
   getFlights,
+  getAirlines,
+  getAirports,
+  getFlightByNum,
+  getFlightByAirline,
+} = require("../controllers/get.controller.js");
+const {
   postAirlines,
   postFlights,
   postAirports,
-} = require("../controllers/index.controller.js");
+} = require("../controllers/post.controller.js");
+
+const {deleteAirport} = require("../controllers/delete.controller.js");
 
 const router = Router();
 
+//* GET ROUTES
+
 router.get("/flights", getFlights);
+router.get("/airlines", getAirlines);
+router.get("/airports", getAirports);
+router.get("/flights/:flightNum", getFlightByNum);
+router.get("/flights-airline", getFlightByAirline);
+
+//* POST ROUTES
+
 router.post("/airlines", postAirlines);
 router.post("/flights", postFlights);
 router.post("/airports", postAirports);
+
+//* DELETE ROUTE
+
+router.post("/delete/:code", deleteAirport);
 
 module.exports = router;

@@ -32,10 +32,13 @@ let sequelize =
         },
         ssl: true,
       })
-    : new Sequelize(`postgres://postgres:18Mayo1987@localhost/sumaFlights`, {
-        logging: false,
-        native: false,
-      });
+    : new Sequelize(
+        `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`,
+        {
+          logging: false,
+          native: false,
+        }
+      );
 
 sequelize
   .authenticate()
@@ -54,7 +57,6 @@ fs.readdirSync(__dirname)
       Sequelize.DataTypes
     );
     db[model.name] = model;
-    console.log(model);
   });
 
 Object.keys(db).forEach((modelName) => {

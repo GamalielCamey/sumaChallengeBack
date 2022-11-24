@@ -1,0 +1,10 @@
+{
+  "development": {
+    "dialect": "postgres",
+    "database": "sumaFlights",
+    "host": "localhost",
+    "port": 5432,
+    "username": "postgres",
+    "password": "18Mayo1987"
+  }
+}

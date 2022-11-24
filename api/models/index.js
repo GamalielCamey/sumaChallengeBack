@@ -33,8 +33,7 @@ let sequelize =
         ssl: true,
       })
     : new Sequelize(
-        `postgres://postgres:18Mayo1987@localhost/sumaFlights
-        `,
+        `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`,
         {
           logging: false,
           native: false,

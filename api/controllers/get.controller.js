@@ -28,23 +28,15 @@ const getAirports = async (req, res) => {
 };
 
 const getFlightByNum = async (req, res) => {
-  const deleteAirport = async (req, res) => {
-    const {code} = req.params;
-    console.log(code);
-    try {
-      await db.Airports.findOne({
-        where: {IATA_CODE: code},
-      }).on("success", (airport) =>
-        airport.destroy().on("success", (el) => {
-          if (el && el.deletedAt) {
-            res.send("Deletion succesfull");
-          }
-        })
-      );
-    } catch (err) {
-      res.send(err.message);
-    }
-  };
+  const {flightNum} = req.params;
+  try {
+    const flight = await db.Flights.findAll({
+      where: {FLIGHT_NUMBER: flightNum},
+    });
+    res.send(flight);
+  } catch (err) {
+    res.send(err.message);
+  }
 };
 
 const getFlightByAirline = async (req, res) => {

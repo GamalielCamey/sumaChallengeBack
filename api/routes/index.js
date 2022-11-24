@@ -10,6 +10,7 @@ const {
   postAirlines,
   postFlights,
   postAirports,
+  updateFlight,
 } = require("../controllers/post.controller.js");
 
 const {deleteAirport} = require("../controllers/delete.controller.js");
@@ -30,7 +31,11 @@ router.post("/airlines", postAirlines);
 router.post("/flights", postFlights);
 router.post("/airports", postAirports);
 
-//* DELETE ROUTE
+//* UPDATE ROUTES
+
+router.put("/flight-update", updateFlight);
+
+//* DELETE ROUTES
 
 router.post("/delete/:code", deleteAirport);
 
